@@ -31,7 +31,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["email", "first_name", "last_name",
-                  "password", "confirmed_password", "role", "image"]
+                  "password", "confirmed_password", "role"]
 
     def validate(self, data):
         """validate te date before saving it """
@@ -49,6 +49,10 @@ class RegistrationSerializer(serializers.ModelSerializer):
             })
 
         return data
+
+    def create(self, validated_data):
+        del validated_data["confirmed_password"]
+        return User.objects.create_user(**validated_data)
 
     def do_passwords_match(self, password1, password2):
         """Check if passwords match."""

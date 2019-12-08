@@ -45,30 +45,30 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
-        def create_superuser(
-                self, first_name=None, last_name=None, email=None, password=None):
-            """Create a `User` who is also a superuser"""
-            if not first_name:
-                raise TypeError('Superusers must have a first name.')
+    def create_superuser(
+            self, first_name=None, last_name=None, email=None, password=None):
+        """Create a `User` who is also a superuser"""
+        if not first_name:
+            raise TypeError('Superusers must have a first name.')
 
-            if not last_name:
-                raise TypeError('Superusers must have a last name.')
+        if not last_name:
+            raise TypeError('Superusers must have a last name.')
 
-            if not email:
-                raise TypeError('Superusers must have an email address.')
+        if not email:
+            raise TypeError('Superusers must have an email address.')
 
-            if not password:
-                raise TypeError('Superusers must have a password.')
+        if not password:
+            raise TypeError('Superusers must have a password.')
 
-            user = self.model(
-                first_name=first_name, last_name=last_name,
-                email=self.normalize_email(email), role='GO')
-            user.is_staff = True
-            user.is_superuser = True
-            user.is_active = True
-            user.is_verified = True
-            user.set_password(password)
-            user.save()
+        user = self.model(
+            first_name=first_name, last_name=last_name,
+            email=self.normalize_email(email), role='GO')
+        user.is_staff = True
+        user.is_superuser = True
+        user.is_active = True
+        user.is_verified = True
+        user.set_password(password)
+        user.save()
 
 
 class User(AbstractUser, BaseAbstractModel):
