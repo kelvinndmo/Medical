@@ -25,7 +25,7 @@ SECRET_KEY = 'ejiv2llec(cww%70vil4n(ow!@y58m-$q=q)&&@3w@c(zzc0e)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
