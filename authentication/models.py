@@ -92,7 +92,7 @@ class User(AbstractUser, BaseAbstractModel):
     active_objects = CustomQuerySet.as_manager()
 
     def __str__(self):
-        return f'{self.email}'
+        return f"{self.email}"
 
     @property
     def get_email(self):

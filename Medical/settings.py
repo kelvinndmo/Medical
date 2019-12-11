@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    'authentication'
+    'authentication',
+    'drugs'
 ]
 
 AUTH_USER_MODEL = 'authentication.User'
@@ -106,6 +107,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'imagine',
+#         'USER': 'novak',
+#         'PASSWORD': 'imagine254',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     },
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -145,7 +157,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass
