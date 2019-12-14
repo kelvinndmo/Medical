@@ -12,4 +12,4 @@ class DrugSerializer(serializers.ModelSerializer):
 class PharmacySerializer(serializers.ModelSerializer):
     class Meta:
         model = Pharmacy
-        fields = ['name', 'location', 'pharmacist']
+        fields = ['name', 'location', 'pharmacist', 'pharmacy_id', 'drugs']
