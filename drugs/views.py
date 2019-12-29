@@ -10,8 +10,9 @@ from rest_framework.response import Response
 
 from drugs.serializers import DrugSerializer, PharmacySerializer
 from drugs.models import Drugs, Pharmacy
+from authentication.models import User
 
-from utils.permissions import IsPharmacistOrGO, ReadOnly, IsGovernmentAdmin
+from utils.permissions import IsPharmacistOrGO, ReadOnly, IsGovernmentAdmin, IsPharmacist
 # Create your views here.
 
 
@@ -53,20 +54,21 @@ class VerifyDrug(generics.RetrieveUpdateDestroyAPIView):
         return Response(response)
 
 
-class CreatePharmacy(generics.ListCreateAPIView):
+class CreatePharmacy(generics.CreateAPIView):
     """ this is to enable CRUD actions of a pharmacy  """
     serializer_class = PharmacySerializer
     queryset = Pharmacy.objects.all()
     permission_classes = (IsGovernmentAdmin | ReadOnly, )
 
-    def post(self, request):
+    def post(self, request, pharmacist_id):
         user = request.user
         drug_data = request.data
 
+        pharmacist = get_object_or_404(User, pk=pharmacist_id)
         serializer = self.serializer_class(data=drug_data)
-        print("*********")
         serializer.is_valid(raise_exception=True)
-        serializer.save(pharmacist=user, pharmacy_id=str(uuid.uuid4())[:10])
+        serializer.save(pharmacist=pharmacist,
+                        pharmacy_id=str(uuid.uuid4())[:10])
 
         response = {
             "phamarcy": serializer.data,
@@ -74,6 +76,16 @@ class CreatePharmacy(generics.ListCreateAPIView):
         }
 
         return Response(response)
+
+
+class GetPharamcies(generics.ListAPIView):
+    """ return a list of available pharmacies """
+    serializer_class = PharmacySerializer
+    permission_classes = (ReadOnly, )
+
+    def get_queryset(self):
+        print("************************")
+        return Pharmacy.objects.all()
 
 
 class PharmacyRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -94,6 +106,7 @@ class PharmacyRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView
 
 class PharamcyRegisterForDrugs(generics.CreateAPIView):
     serializer_class = PharmacySerializer
+    permission_classes = (IsPharmacist, )
 
     def post(self, request, pharmacy_id, drug_id):
 

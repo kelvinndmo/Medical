@@ -20,4 +20,11 @@ class IsGovernmentAdmin(BasePermission):
 
     def has_permission(self, request, view):
         user = request.user if request.user.is_authenticated else None
+        print(user.role == "GO")
         return user.role == "GO"
+
+
+class IsPharmacist(BasePermission):
+    def has_permission(self, request, view):
+        user = request.user
+        return request.user.role == 'PH'
