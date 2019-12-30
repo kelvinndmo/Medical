@@ -70,4 +70,4 @@ $ python manage.py runserver
 
 ## The following endpoints will be available:
 - The base url is `http://13.87.166.192/` you can then add the below endpoints i.e
-      - http://13.87.166.192/api/v1/login
+      - http://13.87.166.192/api/v1/authentication/login
