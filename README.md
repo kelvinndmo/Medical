@@ -75,12 +75,16 @@ $ python manage.py runserver
       - http://13.87.166.192/api/v1/authentication/login
       
 ## Endpoints Available
+```
+- Below are a list of available endpoints in the application.This are the endpoints that our web and mobile applications are     going to consume.
+- The images below show how you can access the specific endpoints listed  below.
+```
       
 | Method | Endpoint                        | Description                           | Roles               |
 | ------ | ------------------------------- | ------------------------------------- | ------------------- |
 | POST   | /api/v1/authentication/register | sign up                               | Every User          |
 | POST   | /api/v1/authentication/login    | login                                 | Every body          |
-| GET    | /api/v1/drugs/                  | Get Drugs                             | Get Drugs           |
+| GET    | /api/v1/drugs/                  | Get Drugs                             | Every User          |
 | POST   | /api/v1/drugs/pharmacy/<int:id> | Create a pharmacy                     | Government Official |
 | GET    | /api/v1/drugs/pharmacies/       | return a list of pharmacies           | All Users           |
 | POST   | /api/v1/drugs/add_drug/<int:id> | Add drug to list of avalaible drugs   | Goverment Official  |
