@@ -66,8 +66,25 @@ $ python manage.py migrate
 ```
 ### Open Terminal and type
 To run the app, then finally run 
+```
 $ python manage.py runserver
+```
 
 ## The following endpoints will be available:
 - The base url is `http://13.87.166.192/` you can then add the below endpoints i.e
       - http://13.87.166.192/api/v1/authentication/login
+      
+## Endpoints Available
+      
+| Method | Endpoint                        | Description                           | Roles               |
+| ------ | ------------------------------- | ------------------------------------- | ------------------- |
+| POST   | /api/v1/authentication/register | sign up                               | Every User          |
+| POST   | /api/v1/authentication/login    | login                                 | Every body          |
+| GET    | /api/v1/drugs/                  | Get Drugs                             | Get Drugs           |
+| POST   | /api/v1/drugs/pharmacy/<int:id> | Create a pharmacy                     | Government Official |
+| GET    | /api/v1/drugs/pharmacies/       | return a list of pharmacies           | All Users           |
+| POST   | /api/v1/drugs/add_drug/<int:id> | Add drug to list of avalaible drugs   | Goverment Official  |
+| GET    | /api/v1/drugs/pharmacy/<int:id> | verify a pharmacy                     | Users               |
+| POST   | api/v1/drugs/                   | Create a drug                         | Government Official |
+| GET    | /api/v1/drugs/<int:id>          | Verify a drug                         | Any User            |
+
