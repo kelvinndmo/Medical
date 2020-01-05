@@ -38,6 +38,7 @@
 **Project management (Agile)** [https://www.pivotaltracker.com](url)
 
 **Version control (Git)** [https://git-scm.com/](url)
+
 **Microsoft Azure (Hosting)** [https://www.portal.azure.com](url)
 
 # Installation and Setup
