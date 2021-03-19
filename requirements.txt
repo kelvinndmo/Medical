@@ -2,7 +2,7 @@ asgiref==3.2.3
 autopep8==1.4.4
 Django==3.0
 django-cors-headers==3.2.0
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 psycopg2-binary==2.8.4
 pycodestyle==2.5.0
 PyJWT==1.7.1
